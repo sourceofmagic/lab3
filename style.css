@@ -1,0 +1,156 @@
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.void{
+    margin: 0 auto;
+    height: 5.5em;
+}
+
+.lizard{
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    height: 3em;
+    opacity: 0.4;
+}
+
+
+.zag {
+    display: flex;
+    height: 25em;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+    background: linear-gradient(to right, rgb(4, 19, 43, 1), rgb(10, 66, 63, 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.forma {
+    order: 3;
+    margin-top: 1em;
+    background: radial-gradient(rgb(136, 219, 189, 1), rgb(19, 19, 173, 0.6));
+    border: hidden;
+    border-radius: 1em;
+}
+
+.meow {
+    color: darkolivegreen;
+}
+
+#bg-video {
+    position: fixed;
+    top: 6em;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+body {
+    color: white;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.check {
+    display: flex;
+    flex-direction: row;
+}
+
+header {
+    display: flex;
+    order: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(19, 19, 173);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    padding-right: 2em;
+}
+
+h1 {
+    text-align: center;
+    color:#497ac9;
+    font-family: 'Segoe UI';
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.logo {
+    height: 4em;
+    padding: 1em;
+    border: none;
+    border-radius: 5em;
+}
+
+img {
+    height: 20em;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+label {
+    display: flex;
+    color: rgb(29, 41, 102, 0.9);
+    justify-content: space-between;
+    flex-direction: column;
+    border: outset;
+    border-color: Highlight;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 0.5em;
+    gap: 1em;
+}
+
+.but_label{
+    border: hidden;
+}
+
+.button:hover {
+    color: #497ac9;
+    background-color: rgb(19, 19, 173); /* ÷вет кнопки при наведении */
+}
+
+.button:active {
+    color: rgb(156, 16, 34, 0.5);
+    background-color: rgb(232, 224, 72, 0.5); /* ÷вет кнопки при нажатии (темнее) */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input {
+    padding: 0.7em;
+}
+
+input::placeholder, input, select, textarea{
+    border: hidden;
+    border-radius: 0.5em;
+    background: rgb(0, 20, 4, 0.1);
+    color: rgb(29, 41, 102, 0.9);
+}

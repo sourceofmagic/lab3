@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задание 3 Горгедж</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="yasher.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+    <header>
+        <img class="logo" src="back.webp" />
+        <h1 class="cite">Мы не обманем!</h1>
+    </header>
+    <div class="void">
+    </div>
+    <div class="zag">
+        <h1>ЗАПОЛНИТЕ ФОРМУ!</h1>
+        <p>Ваши данные не передаются третьим лицам.</p>
+        <p>(честно честно)</p>
+    </div>
+    <div class="forma">
+        <form action="/" method="GET">
+            <label>
+                Введите ФИО:
+
+                <input name="field-name-1" placeholder="Иванов Иван Иванович." />
+            </label>
+
+            <label>
+                Введите номер телефона:
+
+                <input type="tel" placeholder="+79180000000" name="phone" />
+            </label>
+
+            <label>
+                Введите e-mail адрес:
+
+                <input name="field-email" placeholder="example@mail.ru" type="email" />
+            </label>
+
+            <label>
+                Ваша дата рождения:
+
+                <input name="field-date" value="2000-01-01" type="date" />
+            </label>
+
+            <label>
+                Ваш пол:
+
+                <div class="check">
+                    <input type="radio" name="radio-group-1" value="Женский" />
+                    Женский
+                </div>
+                <div class="check">
+                    <input class="check" type="radio" name="radio-group-1" value="Мужской" />
+                    Мужской
+                </div>
+            </label>
+
+            <label>
+                Ваш любимый язык программирования:
+
+
+                <select multiple="multiple" name="field-name-11[]" >
+                    <option value="Pascal">Pascal</option>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="PHP">PHP</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="Haskel">Haskel</option>
+                    <option value="Clojure">Clojure</option>
+                    <option value="Prolog">Prolog</option>
+                    <option value="Scala">Scala</option>
+                </select>
+            </label>
+
+            <label>
+                Ваша биография:
+                <textarea name="field-name-2">Введите текст</textarea>
+            </label>
+
+            <label>
+                Чекбокс:
+                <div class="check">
+                    <input type="checkbox" name="check-1" /> С контрактом ознакомлен(а)
+                </div>
+            </label>
+
+            <label class="but_label">
+                <input type="submit" class="button" value="Сохранить" />
+            </label>
+        </form>
+    </div>
+    <img class="lizard" src="lizard.png" />
+</body>
+</html>
