@@ -14,56 +14,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$email = trim($_POST['field-email']);
 	$birthdate = trim($_POST['field-date']);
 	$gender = isset($_POST['radio-group-1']) ? (int)$_POST['radio-group-1'] : null;
-	$languages = isset($_POST['field-name-11[]']) ? $_POST['field-name-11[]'] : [];
+	$languages = isset($_POST['field-name-11']) ? $_POST['field-name-11'] : [];
 	$bio = trim($_POST['field-name-2']);
 	$agreement = isset($_POST['check-1']) ? 1 : 0;
 
-    // ÔÈÎ
+    // ФИО
     if (empty($fio) || !preg_match("/^[\p{L} \-]+$/u", $fio)) {
-        print('Ââåäèòå êîððåêòíîå ÔÈÎ.</ br>');
+        print('Введите корректное ФИО.</ br>');
         $errors = TRUE;
     }
     
-    // Òåëåôîí
+    // Телефон
     if (empty($phone) || !preg_match("/^\+?[0-9]{10,15}$/", $phone)) {
-        print('Ââåäèòå êîððåêòíûé íîìåð òåëåôîíà.</ br>');
+        print('Введите корректный номер телефона.</ br>');
         $errors = TRUE;
     }
     
     // Email
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        print('Ââåäèòå êîððåêòíûé e-mail.</ br>');
+        print('Введите корректный e-mail.</ br>');
         $errors = TRUE;
     }
     
-    // ÄÐ
+    // ДР
     if (empty($birthdate) || !preg_match("/^(\d{4})-(\d{2})-(\d{2})$/", $birthdate)) {
-        print('Ââåäèòå äàòó ðîæäåíèÿ.</ br>');
+        print('Введите дату рождения.</ br>');
         $errors = TRUE;
     }
     
-    // Ïîë
+    // Пол
     if (empty($gender)) {
-        print('Âûáåðèòå ïîë.</ br>');
+        print('Выберите пол.</ br>');
         $errors = TRUE;
     }
     
-    // ßçûêè
-    $langs = ["Pascal", "C", "C++", "JavaScript", "PHP", "Python", "Java", "Haskel", "Clojure", "Prolog", "Scala"];
-    if (empty($languages) || array_diff($languages, $langs)) {
-        print('Âûáåðèòå ÿçûêè ïðîãðàììèðîâàíèÿ</ br>');
+    // Языки
+    if (count($languages) < 1) {
+        print('Выберите языки программирования</ br>');
         $errors = TRUE;
     }
+
+    $lang_str = implode(',', $languages);
     
-    // Áèîãðàôèÿ
+    // Биография
     if (empty($bio)) {
-        print('Ââåäèòå áèîãðàôèþ </ br>');
+        print('Введите биографию </ br>');
         $errors = TRUE;
     }
     
-    // ×åêáîêñ
+    // Чекбокс
     if (!$agreement) {
-        print('Íàæìèòå ãàëî÷êó </ br>');
+        print('Нажмите галочку </ br>');
         $errors = TRUE;
     }
 
@@ -73,16 +74,14 @@ if ($errors){
 else{
     try{
         $stmt = $db->prepare("INSERT INTO application (fio, phone, email, bday, gender, p_lang, bio, checkbox) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$_POST['field-name-1'], $_POST['phone'], $_POST['field-email'], $_POST['field-date'], (int)$_POST['radio-group-1'], $_POST['field-name-11[]'], $_POST['field-name-2'], isset($_POST["check-1"]) ? 1 : 0]);
+        $stmt->execute([$_POST['field-name-1'], $_POST['phone'], $_POST['field-email'], $_POST['field-date'], (int)$_POST['radio-group-1'], implode(',', $_POST['field-name-11']), $_POST['field-name-2'], isset($_POST['check-1']) ? 1 : 0]);
     }
     catch (PDOException $e){
       print('Error : ' . $e->getMessage());
-      echo "Îøèáêà ïðè ñîõðàíåíèè äàííûõ.";
+      echo "Ошибка при сохранении данных.";
       exit();
     }
-    echo "Äàííûå óñïåøíî ñîõðàíåíû.";
+    echo "Данные успешно сохранены.";
 }
 }
-$db->close();
-
 ?>
