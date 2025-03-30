@@ -18,52 +18,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$bio = trim($_POST['field-name-2']);
 	$agreement = isset($_POST['check-1']) ? 1 : 0;
 
-    // ФИО
+    // Г”Г€ГЋ
     if (empty($fio) || !preg_match("/^[\p{L} \-]+$/u", $fio)) {
-        print('Введите корректное ФИО.</ br>');
+        print('Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г®ГҐ Г”Г€ГЋ.</ br>');
         $errors = TRUE;
     }
     
-    // Телефон
+    // Г’ГҐГ«ГҐГґГ®Г­
     if (empty($phone) || !preg_match("/^\+?[0-9]{10,15}$/", $phone)) {
-        print('Введите корректный номер телефона.</ br>');
+        print('Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© Г­Г®Г¬ГҐГ° ГІГҐГ«ГҐГґГ®Г­Г .</ br>');
         $errors = TRUE;
     }
     
     // Email
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        print('Введите корректный e-mail.</ br>');
+        print('Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© e-mail.</ br>');
         $errors = TRUE;
     }
     
-    // ДР
+    // Г„Гђ
     if (empty($birthdate) || !preg_match("/^(\d{4})-(\d{2})-(\d{2})$/", $birthdate)) {
-        print('Введите дату рождения.</ br>');
+        print('Г‚ГўГҐГ¤ГЁГІГҐ Г¤Г ГІГі Г°Г®Г¦Г¤ГҐГ­ГЁГї.</ br>');
         $errors = TRUE;
     }
     
-    // Пол
+    // ГЏГ®Г«
     if (empty($gender)) {
-        print('Выберите пол.</ br>');
+        print('Г‚Г»ГЎГҐГ°ГЁГІГҐ ГЇГ®Г«.</ br>');
         $errors = TRUE;
     }
     
-    // Языки
+    // ГџГ§Г»ГЄГЁ
     $langs = ["Pascal", "C", "C++", "JavaScript", "PHP", "Python", "Java", "Haskel", "Clojure", "Prolog", "Scala"];
     if (empty($languages) || array_diff($languages, $langs)) {
-        print('Выберите языки программирования</ br>');
+        print('Г‚Г»ГЎГҐГ°ГЁГІГҐ ГїГ§Г»ГЄГЁ ГЇГ°Г®ГЈГ°Г Г¬Г¬ГЁГ°Г®ГўГ Г­ГЁГї</ br>');
         $errors = TRUE;
     }
     
-    // Биография
+    // ГЃГЁГ®ГЈГ°Г ГґГЁГї
     if (empty($bio)) {
-        print('Введите биографию </ br>');
+        print('Г‚ГўГҐГ¤ГЁГІГҐ ГЎГЁГ®ГЈГ°Г ГґГЁГѕ </ br>');
         $errors = TRUE;
     }
     
-    // Чекбокс
+    // Г—ГҐГЄГЎГ®ГЄГ±
     if (!$agreement) {
-        print('Нажмите галочку </ br>');
+        print('ГЌГ Г¦Г¬ГЁГІГҐ ГЈГ Г«Г®Г·ГЄГі </ br>');
         $errors = TRUE;
     }
 
@@ -77,12 +77,12 @@ else{
     }
     catch (PDOException $e){
       print('Error : ' . $e->getMessage());
-      echo "Ошибка при сохранении данных.";
+      echo "ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ Г±Г®ГµГ°Г Г­ГҐГ­ГЁГЁ Г¤Г Г­Г­Г»Гµ.";
       exit();
     }
-    echo "Данные успешно сохранены.";
+    echo "Г„Г Г­Г­Г»ГҐ ГіГ±ГЇГҐГёГ­Г® Г±Г®ГµГ°Г Г­ГҐГ­Г».";
 }
-
+}
 $db->close();
 
 ?>
